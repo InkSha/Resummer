@@ -1,0 +1,47 @@
+- Auth
+  - Login
+  - Register
+  - ? 2FA
+  - ? Device Management
+  - ? Auto Expired
+- Password Guard
+  - Request Password
+  - Verify Password
+  - ? More Password
+  - ? Password Expired
+- Share Link
+  - Create Share Link
+  - Verify Share Link
+  - Disabled Share Link
+  - Enabled Share Link
+  - Get Share Link Info
+  - Get Access Info
+  - ? Link Power, e.g. readonly or can download.
+  - ? Link Total
+  - ? Undo Link
+- Push Notification
+  - Access Share Link Notification
+  - Share Link Expired Notification
+  - Request Access Notification
+  - ? Email Notification
+  - ? Webhook Notification
+  - ? Choose Notification Type
+- Content Management
+  - Create Content
+  - Update Content
+  - Delete Content
+  - Get Content Info
+  - ? Tag
+  - ? Group
+  - ? Search
+  - ? Export And Import
+- Version Control
+  - Create Version
+  - Delete Version
+  - Revert Version
+  - Version Total
+  - ? Compare Version
+- Static Content
+- Data Security
+- Config
+- Auto Backup

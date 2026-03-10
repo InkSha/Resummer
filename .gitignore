@@ -4,6 +4,10 @@
 *.dll
 *.so
 *.dylib
+*.apk
+*.aab
+*.ipa
+*.tar.gz
 build/
 cache/
 target/

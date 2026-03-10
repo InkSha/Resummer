@@ -1,0 +1,22 @@
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: This is a Resummer API server root api.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Index
+      tags:
+      - Root
+      - Example
+swagger: "2.0"
