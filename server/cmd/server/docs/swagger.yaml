@@ -61,6 +61,40 @@ paths:
       tags:
       - Root
       - Example
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: User login
+      parameters:
+      - description: Login Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/auth.AuthRequestDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/network.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/network.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/network.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/network.Response'
+      summary: User login
+      tags:
+      - Auth
   /register:
     post:
       consumes:

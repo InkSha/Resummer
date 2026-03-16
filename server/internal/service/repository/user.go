@@ -10,6 +10,8 @@ import (
 )
 
 var ErrUserExists = errors.New("account already exists")
+var ErrUserNotFound = errors.New("user not found")
+var ErrPasswordIncorrect = errors.New("password incorrect")
 
 func UserRegister(account string, password string) (*model.User, error) {
 	db := globals.GetDB()
@@ -34,4 +36,22 @@ func UserRegister(account string, password string) (*model.User, error) {
 	}
 
 	return &user, nil
+}
+
+func UserLogin(account string, password string) (*model.User, error) {
+	db := globals.GetDB()
+
+	user := &model.User{}
+
+	query := db.Where("account = ?", account).First(user)
+	if err := query.Error; err != nil {
+		return nil, ErrUserNotFound
+	}
+
+	// check password
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
+		return nil, ErrPasswordIncorrect
+	}
+
+	return user, nil
 }
