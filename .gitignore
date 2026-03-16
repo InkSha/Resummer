@@ -54,3 +54,5 @@ __debug*
 
 # Dependency directories
 /pkg/
+
+cmd/server/web/assets/

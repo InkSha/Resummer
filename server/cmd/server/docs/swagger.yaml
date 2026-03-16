@@ -1,0 +1,109 @@
+basePath: /
+definitions:
+  auth.AuthRequestDTO:
+    properties:
+      account:
+        maxLength: 20
+        minLength: 3
+        type: string
+      password:
+        minLength: 6
+        type: string
+    required:
+    - account
+    - password
+    type: object
+  network.Response:
+    properties:
+      code:
+        allOf:
+        - $ref: '#/definitions/network.ResponseStatus'
+        example: 200
+      data: {}
+      msg:
+        example: Success
+        type: string
+    type: object
+  network.ResponseStatus:
+    enum:
+    - 200
+    - 400
+    type: integer
+    x-enum-varnames:
+    - ResponseStatusSuccess
+    - ResponseStatusFailed
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a Resummer API server.
+  termsOfService: http://swagger.io/terms/
+  title: Resummer API
+  version: 0.0.1
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: This is a Resummer API server root api.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Index
+      tags:
+      - Root
+      - Example
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user with account and password.
+      parameters:
+      - description: Register Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/auth.AuthRequestDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/network.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/network.Response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/network.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/network.Response'
+      summary: Register a new user
+      tags:
+      - Auth
+securityDefinitions:
+  ApiKeyAuth:
+    description: |-
+      Type "Bearer" followed by a space and JWT token.
+      ```
+      eg:
+      Bearer <JWT Token>
+      ```
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
