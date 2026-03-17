@@ -9,9 +9,9 @@ import (
 func GenToken(id string, secret string) (string, error) {
 	return token.GenerateToken(
 		map[string]any{
-			"id":  id,
-			"iat": time.Now().Unix(),
-			"exp": time.Now().Add(time.Hour * 24 * 30).Unix(),
+			token.UserIDKey:  id,
+			token.IatKey:     time.Now().Unix(),
+			token.ExpiredKey: time.Now().Add(time.Hour * 24 * 30).Unix(),
 		},
 		secret,
 	)

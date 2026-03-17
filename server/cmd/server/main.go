@@ -7,8 +7,7 @@ import (
 
 func bootstrap() {
 	initialize.Initialize()
-
-	api.Listen(8080)
+	api.Listen("api", 8080)
 }
 
 //	@title			Resummer API
